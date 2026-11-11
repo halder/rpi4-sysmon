@@ -1,0 +1,31 @@
+# General
+board/raspberrypi4-64/rootfs-overlay/etc/wpa_supplicant.conf
+
+# Binaries
+test/test_sysmon_data
+test/test_ioctl
+test/test_poll
+test/test_dashboard_load
+
+# Helper Scripts
+**/scp-to-pi
+sysmon/Makefile-manual
+
+# Kernel build artifacts
+*.o
+*.ko
+*.mod
+*.mod.c
+*.mod.o
+*.symvers
+modules.order
+
+# Kernel build metadata
+.*.cmd
+.tmp_versions/
+
+# C build artifacts
+*.a
+*.so
+*.so.*
+*.out
