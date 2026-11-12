@@ -1,5 +1,5 @@
 # General
-board/raspberrypi4-64/rootfs-overlay/etc/wpa_supplicant.conf
+base_external/board/raspberrypi4-64/rootfs-overlay/etc/wpa_supplicant.conf
 
 # Binaries
 test/test_sysmon_data

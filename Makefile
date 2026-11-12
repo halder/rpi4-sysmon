@@ -2,10 +2,10 @@ BUILDROOT_DIR=buildroot
 BUILDROOT_CONFIG=$(BUILDROOT_DIR)/.config
 
 # Final project is the Buildroot external tree
-EXTERNAL_DIR=.
-EXTERNAL_REL_BUILDROOT=..
+EXTERNAL_DIR=base_external
+EXTERNAL_REL_BUILDROOT=../$(EXTERNAL_DIR)
 
-DEFCONFIG=configs/raspberrypi4-64_sysmon_defconfig
+DEFCONFIG=$(EXTERNAL_DIR)/configs/raspberrypi4-64_sysmon_defconfig
 DEFCONFIG_REL_BUILDROOT=../$(DEFCONFIG)
 
 
@@ -34,12 +34,14 @@ endif
 
 # Open Buildroot menuconfig
 menuconfig:
-	$(MAKE) -C $(BUILDROOT_DIR) menuconfig
+	$(MAKE) -C $(BUILDROOT_DIR) menuconfig \
+		BR2_EXTERNAL=$(EXTERNAL_REL_BUILDROOT)
 
 
 # Save current Buildroot configuration
 save-defconfig:
 	$(MAKE) -C $(BUILDROOT_DIR) savedefconfig \
+		BR2_EXTERNAL=$(EXTERNAL_REL_BUILDROOT) \
 		BR2_DEFCONFIG=$(DEFCONFIG_REL_BUILDROOT)
 
 
